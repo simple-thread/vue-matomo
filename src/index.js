@@ -10,6 +10,7 @@ const defaultOptions = {
   requireConsent: false,
   trackInitialView: true,
   trackSiteSearch: false,
+  trackInteraction: undefined,
   trackerFileName: 'matomo',
   trackerUrl: undefined,
   trackerScriptUrl: undefined,
@@ -23,6 +24,10 @@ const defaultOptions = {
 export const matomoKey = 'Matomo'
 
 function trackUserInteraction (options, to, from) {
+  if (typeof options.trackInteraction === 'function' && !options.trackInteraction(to, from)) {
+    return
+  }
+
   if (typeof options.trackSiteSearch === 'function') {
     const siteSearch = options.trackSiteSearch(to)
     if (siteSearch) {

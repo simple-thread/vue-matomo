@@ -109,6 +109,15 @@ Vue.use(VueMatomo, {
   // ]
   preInitActions: [],
 
+  // A function to determine whether to track a router page change.  If not a function
+  // all interactions will be tracked.  Receives both the new route and the previous route
+  // and returns either true or false.  True if the interaction should be tracked, false
+  // if the interaction should be ignored
+  // Default: undefined
+  // Example: (to, from) => {
+  //   return !(from && to.path === from.path)
+  // }
+  trackInteraction: undefined,
   // A function to determine whether to track an interaction as a site search
   // instead of as a page view. If not a function, all interactions will be
   // tracked as page views. Receives the new route as an argument, and
