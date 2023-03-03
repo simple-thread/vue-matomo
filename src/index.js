@@ -7,6 +7,7 @@ const defaultOptions = {
   enableHeartBeatTimer: false,
   enableLinkTracking: true,
   heartBeatTimerInterval: 15,
+  useRouteNameAsTitle: false,
   requireConsent: false,
   trackInitialView: true,
   trackSiteSearch: false,
@@ -65,7 +66,12 @@ function trackMatomoPageView (options, to, from) {
     }
 
     options.debug && console.debug('[vue-matomo] Tracking ' + url)
-    title = to.meta.title || url
+
+    if (options.useRouteNameAsTitle) {
+      title = to.name || url
+    } else {
+      title = to.meta.title || url
+    }
   }
 
   if (referrerUrl) {

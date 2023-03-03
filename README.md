@@ -59,6 +59,10 @@ Vue.use(VueMatomo, {
   // Default: true
   enableLinkTracking: true,
 
+  // Uses route.name for page title when tracking page views instead of route.meta.title
+  // Default: false
+  useRouteNameAsTitle: false,
+
   // Require consent before sending tracking information to matomo
   // Default: false
   requireConsent: false,
