@@ -36,7 +36,7 @@
     "webpack-merge": "^5.1.2"
   },
   "engines": {
-    "node": "22.14.0"
+    "node": ">=20"
   },
   "browserslist": [
     "> 1%",
